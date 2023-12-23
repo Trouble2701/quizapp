@@ -69,7 +69,7 @@ let questions = [
         "answer_2": "Maus",
         "answer_3": "Trackball",
         "answer_4": "Scanner",
-        "right_answer": 3
+        "right_answer": 4
     },
     {
         "question": "Welches Gerät ist ein Eingabe- und Ausgabegerät zugleich?",
