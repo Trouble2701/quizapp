@@ -47,7 +47,14 @@
           <div id="nextQuestion"></div>
         </div>
       </div>
-      <div class="card-body cardEnd" id="cardsEnd">Ende</div>
+      <div class="card-body cardEnd" id="cardsEnd">
+        <h5 class="card-title text-center mb-3">Das Quiz ist beendet</h5>
+        <div class="card mb-3 final">
+          <div>Du hast <b id="rightAnswers"></b> von <b id="allAnswers"></b> Richtig beantwortet,</div>
+          <div class="train">das sind <b id="prozent"></b><p id="training"></p></div>
+        </div>
+        <button type="button" class="btn btn-primary box-shadow-answer" onclick="restart()">Erneut Spielen</button>
+      </div>
     </div>
   </div>
 </body>

@@ -80,3 +80,5 @@ let questions = [
         "right_answer": 4
     }
 ];
+
+let rightAnswers = [0];
