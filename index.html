@@ -16,7 +16,7 @@
     crossorigin="anonymous"></script>
 </head>
 
-<body onload="questionsStart(4)">
+<body onload="questionsStart()">
   <nav class="navbar bg-body-tertiary">
     <div class="container-fluid">
       <span class="navbar-brand mb-0 h1">QuizApp</span>
@@ -26,7 +26,27 @@
   <div class="container">
     <div class="card box-shadow width-card">
       <img src="./img/woman.jpg" class="card-img-top" alt="Quiz Time">
-      <div class="card-body" id="question"></div>
+      <div class="card-body">
+        <h5 class="card-title text-center mb-3" id="question"></h5>
+        <div class="card mb-3">
+          <div class="card-body box-shadow-answer" id="answer_1"></div>
+        </div>
+        <div class="card mb-3">
+          <div class="card-body box-shadow-answer" id="answer_2"></div>
+        </div>
+        <div class="card mb-3">
+          <div class="card-body box-shadow-answer" id="answer_3"></div>
+        </div>
+        <div class="card mb-3">
+          <div class="card-body box-shadow-answer" id="answer_4"></div>
+        </div>
+        <div class="question-footer">
+          <div>
+            <b id="thisQuestion"></b> von <b id="questionLength"></b> Fragen
+          </div>
+          <div id="nextQuestion"></div>
+        </div>
+      </div>
     </div>
   </div>
 </body>

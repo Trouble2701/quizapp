@@ -1,45 +1,31 @@
-function questionsStart(thisQuestion){
-    let contentQuestion = document.getElementById('question');
-    endOfQuestion = 'Next';
+let currentQuestion = 0;
 
-    contentQuestion.innerHTML = '';
+function questionsStart(){
+    let endOfQuestion = document.getElementById('nextQuestion');
+    let thisQuestion = document.getElementById('thisQuestion');
+    let questionLength = document.getElementById('questionLength');
+    endOfQuestion.innerHTML = '<button type="button" class="btn btn-primary box-shadow-answer">Next</button>';
 
-    if(thisQuestion == questions.length-1){
-        endOfQuestion = 'End';
+    if(currentQuestion == questions.length-1){
+        endOfQuestion.innerHTML = '<button type="button" class="btn btn-primary box-shadow-answer">End</button>';
     }
-    contentQuestion.innerHTML = generateContent(questions[thisQuestion]['question'], questions[thisQuestion]['answer_1'], questions[thisQuestion]['answer_2'], questions[thisQuestion]['answer_3'], questions[thisQuestion]['answer_4'], thisQuestion+1, endOfQuestion);
+
+    thisQuestion.innerHTML = currentQuestion+1;
+    questionLength.innerHTML = questions.length;
+
+    showQuestion();
 }
 
-function generateContent(question, answer_1, answer_2, answer_3, answer_4, aquestion, endOfQuestion){
-    return /*html*/`
-    <h5 class="card-title text-center mb-3">${question}</h5>
-        <div class="card mb-3">
-          <div class="card-body box-shadow-answer">
-          ${answer_1}
-          </div>
-        </div>
-        <div class="card mb-3">
-          <div class="card-body box-shadow-answer">
-          ${answer_2}
-          </div>
-        </div>
-        <div class="card mb-3">
-          <div class="card-body box-shadow-answer">
-          ${answer_3}
-          </div>
-        </div>
-        <div class="card mb-3">
-          <div class="card-body box-shadow-answer">
-          ${answer_4}
-          </div>
-        </div>
-        <div class="question-footer">
-          <div>
-            <b>${aquestion}</b> von <b>${questions.length}</b> Fragen
-          </div>
-          <div>
-            <button type="button" class="btn btn-primary box-shadow-answer" id="endOfQuestion">${endOfQuestion}</button>
-          </div>
-        </div>
-        `;
+function showQuestion(){
+    let question = questions[currentQuestion]['question'];
+    let answer_1 = questions[currentQuestion]['answer_1'];
+    let answer_2 = questions[currentQuestion]['answer_2'];
+    let answer_3 = questions[currentQuestion]['answer_3'];
+    let answer_4 = questions[currentQuestion]['answer_4'];
+    
+    document.getElementById('question').innerHTML = question;
+    document.getElementById('answer_1').innerHTML = answer_1;
+    document.getElementById('answer_2').innerHTML = answer_2;
+    document.getElementById('answer_3').innerHTML = answer_3;
+    document.getElementById('answer_4').innerHTML = answer_4;
 }
