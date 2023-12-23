@@ -29,3 +29,23 @@ function showQuestion(){
     document.getElementById('answer_3').innerHTML = answer_3;
     document.getElementById('answer_4').innerHTML = answer_4;
 }
+
+function showAnswer(clickAnswer){
+    let right_answer = questions[currentQuestion]['right_answer'];
+    let chooseRightAnswer = document.getElementById(`clickAnswer_${right_answer}`)
+    let chooseAnswer = document.getElementById(`clickAnswer_${clickAnswer}`);
+    let answers = document.getElementById('cards');
+    let nextQuestion = document.getElementById('nextQuestion');
+
+    if(right_answer == clickAnswer){
+        chooseAnswer.style.boxShadow = '0 0 8px rgb(0, 151, 0)';
+        console.log('Richtig');
+    }else{
+        chooseRightAnswer.style.boxShadow = '0 0 8px rgb(0, 151, 0)';
+        chooseAnswer.style.boxShadow = '0 0 8px rgb(168, 0, 0)';
+        console.log('Falsch');
+    }
+
+    answers.style.pointerEvents = 'none';
+    nextQuestion.style.pointerEvents = 'visible';
+}

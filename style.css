@@ -30,3 +30,13 @@ body{
     padding-top: 15px;
     border-top: 1px solid rgba(128, 128, 128, 0.4);
 }
+
+.answer{
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 225ms ease-in-out;
+}
+
+.answer:hover{
+    box-shadow: 0 0 8px rgb(216, 158, 0) !important;
+}
