@@ -3,7 +3,7 @@ let questions = [
         "question": "Was ist ein Ausgabegerät?",
         "answer_1": "Bildschirm",
         "answer_2": "Webcam",
-        "answer_3": "Lautsprecher",
+        "answer_3": "Prozessor",
         "answer_4": "Maus",
         "right_answer": 1
     },
