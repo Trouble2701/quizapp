@@ -4,7 +4,7 @@ function questionsStart() {
     let endOfQuestion = document.getElementById('nextQuestion');
 
     document.getElementById('nextQuestion').style.pointerEvents = 'none';
-    endOfQuestion.innerHTML = `<button type="button" class="btn btn-primary box-shadow-answer" onclick="nextQuestion(${currentQuestion + 1})">Next</button>`;
+    endOfQuestion.innerHTML = `<button type="button" class="btn btn-primary box-shadow-answer" onclick="nextQuestion()">Next</button>`;
 
     if (currentQuestion == questions.length - 1) {
         endOfQuestion.innerHTML = '<button type="button" class="btn btn-primary box-shadow-answer" onclick="endQuestion()">End</button>';
@@ -12,7 +12,7 @@ function questionsStart() {
 
     document.getElementById('thisQuestion').innerHTML = currentQuestion + 1;
     document.getElementById('questionLength').innerHTML = questions.length;
-
+    prgressBar();
     showQuestion();
 }
 
@@ -30,23 +30,33 @@ function showQuestion() {
     document.getElementById('answer_4').innerHTML = answer_4;
 }
 
+function prgressBar(){
+    progressProzent = Math.round(100/questions.length*(currentQuestion+1))+'%';
+    document.getElementById('progressBar').style.width = progressProzent;
+    document.getElementById('progressBar').innerHTML = progressProzent;
+
+}
+
 function showAnswer(clickAnswer) {
     let right_answer = questions[currentQuestion]['right_answer'];
 
     if (right_answer == clickAnswer) {
-        document.getElementById(`clickAnswer_${clickAnswer}`).style.boxShadow = '0 0 8px rgb(0, 151, 0)';
-        rightAnswers[0] = rightAnswers[0]+1;
+        document.getElementById(`clickAnswer_${clickAnswer}`).style.backgroundColor = 'green';
+        document.getElementById(`clickAnswer_${clickAnswer}`).style.color = 'white';
+        rightAnswers++;
     } else {
-        document.getElementById(`clickAnswer_${right_answer}`).style.boxShadow = '0 0 8px rgb(0, 151, 0)';
-        document.getElementById(`clickAnswer_${clickAnswer}`).style.boxShadow = '0 0 8px rgb(168, 0, 0)';
+        document.getElementById(`clickAnswer_${clickAnswer}`).style.backgroundColor = 'red';
+        document.getElementById(`clickAnswer_${clickAnswer}`).style.color = 'white';
+        document.getElementById(`clickAnswer_${right_answer}`).style.backgroundColor = 'green';
+        document.getElementById(`clickAnswer_${right_answer}`).style.color = 'white';
     }
 
     document.getElementById('cards').style.pointerEvents = 'none';
     document.getElementById('nextQuestion').style.pointerEvents = 'visible';
 }
 
-function nextQuestion(i) {
-    currentQuestion = i;
+function nextQuestion() {
+    currentQuestion++;
     resetAnswer();
     questionsStart();
 }
@@ -54,7 +64,7 @@ function nextQuestion(i) {
 function endQuestion(){
     document.getElementById('cards').style.display = 'none';
     document.getElementById('cardsEnd').style.display = 'flex';
-    document.getElementById('rightAnswers').innerHTML = rightAnswers[0];
+    document.getElementById('rightAnswers').innerHTML = rightAnswers;
     document.getElementById('allAnswers').innerHTML = questions.length;
 
     prozent = 100/questions.length*rightAnswers;
@@ -79,7 +89,7 @@ function calcAnswers(prozent){
 
 function restart(){
     currentQuestion = 0;
-    rightAnswers[0] = 0;
+    rightAnswers = 0;
     resetAnswer();
     questionsStart();
 }
@@ -87,10 +97,14 @@ function restart(){
 function resetAnswer(){
     document.getElementById('cards').style.display = 'unset';
     document.getElementById('cardsEnd').style.display = 'none';
-    document.getElementById('clickAnswer_1').style.boxShadow = 'none';
-    document.getElementById('clickAnswer_2').style.boxShadow = 'none';
-    document.getElementById('clickAnswer_3').style.boxShadow = 'none';
-    document.getElementById('clickAnswer_4').style.boxShadow = 'none';
+    document.getElementById('clickAnswer_1').style.backgroundColor = 'unset';
+    document.getElementById('clickAnswer_2').style.backgroundColor = 'unset';
+    document.getElementById('clickAnswer_3').style.backgroundColor = 'unset';
+    document.getElementById('clickAnswer_4').style.backgroundColor = 'unset';
+    document.getElementById('clickAnswer_1').style.color = 'unset';
+    document.getElementById('clickAnswer_2').style.color = 'unset';
+    document.getElementById('clickAnswer_3').style.color = 'unset';
+    document.getElementById('clickAnswer_4').style.color = 'unset';
     document.getElementById('cards').style.pointerEvents = 'visible';
     document.getElementById('nextQuestion').style.pointerEvents = 'none';
 }

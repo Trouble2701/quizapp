@@ -81,4 +81,4 @@ let questions = [
     }
 ];
 
-let rightAnswers = [0];
+let rightAnswers = 0;

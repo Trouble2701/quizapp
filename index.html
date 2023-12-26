@@ -27,6 +27,9 @@
     <div class="card box-shadow width-card">
       <img src="./img/woman.jpg" class="card-img-top" alt="Quiz Time">
       <div class="card-body cardStart" id="cards">
+        <div class="progress">
+          <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 0%" id="progressBar"></div>
+        </div>
         <h5 class="card-title text-center mb-3" id="question"></h5>
         <a class="card mb-3 answer" onclick="showAnswer(1)" id="clickAnswer_1">
           <div class="card-body box-shadow-answer" id="answer_1"></div>
@@ -49,9 +52,13 @@
       </div>
       <div class="card-body cardEnd" id="cardsEnd">
         <h5 class="card-title text-center mb-3">Das Quiz ist beendet</h5>
+        <img src="./img/tropy.png">
         <div class="card mb-3 final">
           <div>Du hast <b id="rightAnswers"></b> von <b id="allAnswers"></b> Richtig beantwortet,</div>
-          <div class="train">das sind <b id="prozent"></b><p id="training"></p></div>
+          <div class="train">
+            <div>das sind <b id="prozent"></b></div>
+            <div><p id="training"></p></div>
+          </div>
         </div>
         <button type="button" class="btn btn-primary box-shadow-answer" onclick="restart()">Erneut Spielen</button>
       </div>
