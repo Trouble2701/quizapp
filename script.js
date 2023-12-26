@@ -40,21 +40,33 @@ function prgressBar(){
 function showAnswer(clickAnswer) {
     let right_answer = questions[currentQuestion]['right_answer'];
 
-    if (right_answer == clickAnswer) {
-        document.getElementById(`clickAnswer_${clickAnswer}`).style.backgroundColor = 'green';
-        document.getElementById(`clickAnswer_${clickAnswer}`).style.color = 'white';
-        AUDIO_SUCCESS.play();
-        rightAnswers++;
+    if (answerRight(right_answer, clickAnswer)) {
+        rightAnswer(clickAnswer);
     } else {
-        document.getElementById(`clickAnswer_${clickAnswer}`).style.backgroundColor = 'red';
-        document.getElementById(`clickAnswer_${clickAnswer}`).style.color = 'white';
-        document.getElementById(`clickAnswer_${right_answer}`).style.backgroundColor = 'green';
-        document.getElementById(`clickAnswer_${right_answer}`).style.color = 'white';
-        AUDIO_FAIL.play();
+        falseAnswer(clickAnswer, right_answer);
     }
 
     document.getElementById('cards').style.pointerEvents = 'none';
     document.getElementById('nextQuestion').style.pointerEvents = 'visible';
+}
+
+function answerRight(right_answer, clickAnswer){
+   return right_answer == clickAnswer;
+}
+
+function rightAnswer(clickAnswer){
+    document.getElementById(`clickAnswer_${clickAnswer}`).style.backgroundColor = 'green';
+    document.getElementById(`clickAnswer_${clickAnswer}`).style.color = 'white';
+    AUDIO_SUCCESS.play();
+    rightAnswers++;
+}
+
+function falseAnswer(clickAnswer, right_answer){
+    document.getElementById(`clickAnswer_${clickAnswer}`).style.backgroundColor = 'red';
+        document.getElementById(`clickAnswer_${clickAnswer}`).style.color = 'white';
+        document.getElementById(`clickAnswer_${right_answer}`).style.backgroundColor = 'green';
+        document.getElementById(`clickAnswer_${right_answer}`).style.color = 'white';
+        AUDIO_FAIL.play();
 }
 
 function nextQuestion() {
