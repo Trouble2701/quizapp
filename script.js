@@ -43,12 +43,14 @@ function showAnswer(clickAnswer) {
     if (right_answer == clickAnswer) {
         document.getElementById(`clickAnswer_${clickAnswer}`).style.backgroundColor = 'green';
         document.getElementById(`clickAnswer_${clickAnswer}`).style.color = 'white';
+        AUDIO_SUCCESS.play();
         rightAnswers++;
     } else {
         document.getElementById(`clickAnswer_${clickAnswer}`).style.backgroundColor = 'red';
         document.getElementById(`clickAnswer_${clickAnswer}`).style.color = 'white';
         document.getElementById(`clickAnswer_${right_answer}`).style.backgroundColor = 'green';
         document.getElementById(`clickAnswer_${right_answer}`).style.color = 'white';
+        AUDIO_FAIL.play();
     }
 
     document.getElementById('cards').style.pointerEvents = 'none';
@@ -67,8 +69,9 @@ function endQuestion(){
     document.getElementById('rightAnswers').innerHTML = rightAnswers;
     document.getElementById('allAnswers').innerHTML = questions.length;
 
-    prozent = 100/questions.length*rightAnswers;
+    prozent = Math.round(100/questions.length*rightAnswers);
     document.getElementById('prozent').innerHTML = prozent+'%!';
+    AUDIO_END.play();
 
     calcAnswers(prozent);
 }

@@ -82,3 +82,6 @@ let questions = [
 ];
 
 let rightAnswers = 0;
+let AUDIO_SUCCESS = new Audio('./audio/success.mp3');
+let AUDIO_FAIL = new Audio('./audio/fail.mp3');
+let AUDIO_END = new Audio('./audio/gameend.mp3');
